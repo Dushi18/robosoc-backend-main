@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'now';
+    src: url("../../assets/now.regular.otf");
+}
+
+html,body{
+    height: 100vh;
+    width: 100vw;
+    background-color: lightgray;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding : 0;
+    font-family: 'now';
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    min-height: 60%;
+    min-width: 30%;
+    border-radius: 0.5rem;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    width: 80%;
+}
+input{
+    height: 4vh;
+    width: 100%;
+    font-family: 'now';
+    text-indent: 2px;
+}
+button{
+    padding: 2px 4px;
+    background-color: #fd850e;
+    color: #fff;
+    width: 60px;
+    height: 27px;
+    border: #fd850e 1px solid;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+textarea:focus{
+    outline: none;
+}
+textarea{
+    resize: none;
+    min-height: 10vh;
+    font-family: 'now';
+    padding: 2px 2px;
+    text-indent: 2px;
+    width: 100%;
+}
+input:focus{
+    outline: none;
+}
+@media screen and (max-width:768px){
+    .main-body{
+        min-width: 50%;
+    }
+}
+@media screen and (max-width:640px){
+    .main-body{
+        min-width: 60%;
+    }
+}
+@media screen and (max-width:480px){
+    .main-body{
+        min-width: 80%;
+    }
+}

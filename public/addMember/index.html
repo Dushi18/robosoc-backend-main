@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Member</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="main-body">
+        <h2>Add Member</h2>
+        <form class="form" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+            <input type="text" placeholder="Member Name" name="name">
+            <input type = "text" placeholder="Designation" name="position">
+            <input type = "text" placeholder="Tech Stack" name="techStack">
+            <input type = "file" placeholder="Image" id="inputFile"  onchange="handleChange(event)" name="imgFile">
+            <input type="text" placeholder="Image" onclick="handleClick()"name="file" id="fileName" readonly="true">
+            <input type = "number" placeholder="Passout Year" required = true name = "passOutYear">
+            <input type = "url" placeholder="Linkedin Link" name="linkedinLink">
+            <input type = "url" placeholder="Github Link" name="githubLink">
+            <input type = "url" placeholder="Insta Link" name="instaLink">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <script>
+        let x = document.getElementById('inputFile')
+        let y = document.getElementById
+        let file = ""
+        x.style.display = "none"
+        let handleClick = ()=>{
+            x.click()
+        }
+        let handleChange = (e)=>{
+            if(e.target.files[0]===undefined){
+                return;
+            }
+            if(e.target.files[0]?.name){
+                let name = e.target.files[0].name.split('.')
+                if(name[name.length-1]!=='png' && name[name.length-1]!=='jpg'){
+                    e.target.value = null
+                    alert('Only png and jpg files are allowed')
+                    return
+                }
+            }
+            document.getElementById('fileName').value = e.target.files[0].name
+            file = e.target.files[0]
+        }
+        let handleSubmit = (e)=>{
+            e.preventDefault()
+            let formData = new FormData()
+            let form = e.target
+            formData.append("name",form.name.value)
+            formData.append("position", form.position.value.trim())
+            formData.append("techStack",form.techStack.value.trim())
+            formData.append("image",file)
+            formData.append("passOutYear",form.passOutYear.value)
+            formData.append("linkedinLink",form.linkedinLink.value)
+            formData.append("instaLink",form.instaLink.value)
+            formData.append("githubLink",form.githubLink.value)
+            if(!form.name.value || !form.position.value || !form.techStack.value || !file){
+                alert("Fill all the mandatory details")
+                return
+            }
+            fetch("/api/members", {
+                method: "POST",
+                body: formData,
+            })
+            .then(response => {
+                if(!response.ok){
+                    if(response.status===403){
+                        throw new Error('Access to requested resource is for admin only. Login as admin to access the resource')
+                    }
+                }
+                alert('Member Added')
+                let inputs = document.querySelectorAll('input');
+                inputs.forEach(input => {
+                    input.value = '';
+                });
+                return response.json()
+            })
+            .then(data => console.log(data))
+            .catch(error => {
+                console.error(error)
+                alert(error.message)
+            })
+        }
+    </script>
+</body>
+</html>

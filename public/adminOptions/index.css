@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding : 0;
+}
+@font-face {
+    font-family: 'now';
+    src: url("/assets/now.regular.otf");
+}
+
+body{
+    font-family: 'now';
+    height: 100dvh;
+    width: 100dvw;
+    overflow-x: hidden;
+    background-color: lightgray;
+    overflow-y: hidden;
+}
+
+div{
+    margin-top: 5dvh;
+}
+h1{
+    margin-left: 3vw;
+}
+
+ul{
+    display: grid;
+    gap : 5vh;
+    margin-top: 5vh;
+    margin-left: 4vw;
+}
+
+li{
+    display: flex;
+    gap : 4vw;
+}
+
+li span{
+    min-width: 25vw;
+    width: 30vw;
+}
+
+a{
+    text-decoration: none;
+}

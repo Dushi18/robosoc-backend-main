@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members</title>
+</head>
+<link rel="stylesheet" href="index.css">
+
+<body>
+    <div class="heading">
+        <h2>Members</h2>
+    </div>
+    <div id="data">
+    </div>
+    <div class="modal" onclick="discard()">
+        <div class="delete-member" onclick="stopPropagation(event)">
+            <div class="delete-text">
+            </div>
+            <div class="delete-options">
+                <span onclick="deleteMember()" class="delete-permission">Yes</span>
+                <span onclick="discard()" class="discard">No</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal" onclick="discardChanges()">
+        <div class="main-body" onclick="stopPropagation(event)">
+            <h2>Edit Member</h2>
+            <form class="form" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+                <input type="text" placeholder="Member Name" name="name">
+                <input type = "text" placeholder="Designation" name="position">
+                <input type = "text" placeholder="Tech Stack" name="techStack">
+                <input type = "file" placeholder="Image" id="inputFile"  onchange="handleChange(event)" name="imgFile">
+                <input type="text" placeholder="Image" onclick="handleClick()"name="file" id="fileName" readonly="true">
+                <input type = "number" placeholder="Passout Year" required = true name = "passOutYear">
+                <input type = "url" placeholder="Linkedin Link" name="linkedinLink">
+                <input type = "url" placeholder="Github Link" name="githubLink">
+                <input type = "url" placeholder="Insta Link" name="instaLink">
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

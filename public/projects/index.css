@@ -1,0 +1,199 @@
+*{
+    margin: 0;
+    padding : 0;
+}
+
+@font-face {
+    font-family: 'now';
+    src: url("../../assets/now.regular.otf");
+}
+
+body{
+    min-height: 100vh;
+    width: 100vw;
+    font-family: 'now';
+    overflow-x: hidden;
+    background-color: lightblue;
+}
+
+.heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 15vh;
+}
+
+#data{
+    display : grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap :1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.single-project{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding : 10px 10px;
+    border-radius: 0.5rem;
+    gap :2vh;
+}
+
+.single-project:hover{
+    background-color: #f5f5f5;
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: all 0.2s ease-in-out;
+}
+
+.img-src{
+    height: 100px;
+    width: 100px;
+}
+
+.img-src img{
+    height: 100px;
+    border-radius: 50%;
+    width: 100px;
+}
+
+.options{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+svg:hover{
+    fill: green;
+}
+#delete:hover{
+    fill : red;
+}
+#delete{
+    width: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#edit{
+    width: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+.main-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255,255,255);
+    min-height: 60%;
+    opacity: 1;
+    min-width: 30%;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;    gap: 4vh;
+}
+.main-body>h2{
+    margin-top: 4vh;
+}
+.modal{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: #f5f5f5; */
+    /* opacity: 1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0%;
+    left: 0%;
+}
+.delete-project{
+    display: flex;
+    flex-direction: column;
+    padding : 1rem 1rem;
+    background-color:white;
+    z-index: 7;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    min-height: 17vh;
+    justify-content: space-between;
+    border-radius: 0.75rem;
+}
+.delete-options{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.delete-options span{
+    width : 50px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-radius : 0.25rem;
+    cursor: pointer;
+    padding: 2px 2px;
+}
+.delete-permission:hover{
+    background-color: red;
+    color: white;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    width: 80%;
+}
+input{
+    height: 4vh;
+    width: 100%;
+    font-family: 'now';
+    text-indent: 2px;
+}
+button{
+    padding: 2px 4px;
+    background-color: #fd850e;
+    color: #fff;
+    width: 60px;
+    height: 27px;
+    border: #fd850e 1px solid;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-top: 2vh;
+}
+input:focus{
+    outline: none;
+}
+
+textarea{
+    resize: none;
+    font-family: 'now';
+    min-height: 10vh;
+    text-indent: 2px;
+    padding: 2px 2px;
+    width: 100%;
+}
+textarea:focus{
+    outline: none;
+}
+@media screen and (max-width:768px){
+    #data{
+        display : grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width : 540px){
+    #data{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width : 480px){
+    #data{
+        grid-template-columns: 1fr;
+    }
+}

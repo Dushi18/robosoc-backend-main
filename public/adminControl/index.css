@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'now';
+    src: url("../../assets/now.regular.otf");
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'now';
+}
+
+.form{
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    max-height: 80vh;
+    min-height: 40vh;
+    min-width: 30%;
+    align-items: center;
+    padding: 1rem 1rem;
+    border-radius: 0.5rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    width: 80%;
+}
+
+input{
+    min-height: 4vh;
+    text-indent: 2px;
+    font-family: 'now';
+}
+
+button{
+    width: fit-content;
+    max-width: 80px;
+    padding: 4px 8px;
+    margin-top: 2vh;
+    background-color: #fd850e;
+    border: #fd850e 1px solid;
+    color: white;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+input{
+    text-indent: 2px;
+}

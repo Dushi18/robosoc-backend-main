@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Achievement</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="main-body">
+        <h2>Add Achievement</h2>
+        <form class="form" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+            <input type="text" placeholder="Achievement Name" name="name">
+            <textarea type = "text" placeholder="Description" name="description" class="textarea"></textarea>
+            <input type = "file" placeholder="Image" id="inputFile"  onchange="handleChange(event)" name="imgFile">
+            <input type="text" placeholder="Image" onclick="handleClick()"name="file" id="fileName" readonly="true">
+            <input type="number" placeholder="Year" name="year">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <script>
+        let x = document.getElementById('inputFile')
+        let y = document.getElementById
+        let file = ""
+        x.style.display = "none"
+        let handleClick = ()=>{
+            x.click()
+        }
+        let handleChange = (e)=>{
+            if(e.target.files[0]===undefined){
+                return;
+            }
+            if(e.target.files[0]?.name){
+                let name = e.target.files[0].name.split('.')
+                if(name[name.length-1]!=='png' && name[name.length-1]!=='jpg'){
+                    e.target.value = null
+                    alert('Only png and jpg files are allowed')
+                    return
+                }
+            }
+            document.getElementById('fileName').value = e.target.files[0].name
+            file = e.target.files[0]
+        }
+        let handleSubmit = (e)=>{
+            e.preventDefault()
+            let formData = new FormData()
+            let form = e.target
+            if(!form.name.value || !form.description.value || !file || !form.year.value){
+                alert("Fill all the details")
+                return
+            }
+            formData.append("name",form.name.value)
+            formData.append("description", form.description.value)
+            formData.append("image",file)
+            formData.append("year",form.year.value)
+            fetch("/api/achievements", {
+                method: "POST",
+                body: formData,
+            })
+            .then(response => {
+                if(!response.ok){
+                    if(response.status===403){
+                        throw new Error('Access to requested resource is for admin only. Login as admin to access the resource')
+                    }
+                }
+                response.json()
+                alert('Achievement added successfully')
+                let inputs = document.querySelectorAll('input');
+                inputs.forEach(input => {
+                    input.value = '';
+                });
+                let textarea = document.querySelector('textarea')
+                textarea.value = '';
+            })
+            .then(data => console.log(data))
+            .catch(error => {
+                console.error(error)
+                alert(error.message)
+            })
+        }
+    </script>
+</body>
+</html>

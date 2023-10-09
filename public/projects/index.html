@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+</head>
+<link rel="stylesheet" href="index.css">
+<body>
+    <div class="heading">
+        <h2>Projects</h2>
+    </div>
+    <div id="data">
+    </div>
+    <div class="modal" onclick="discard()">
+        <div class="delete-project" onclick="stopPropagation(event)">
+            <div class="delete-text">
+            </div>
+            <div class="delete-options">
+                <span onclick="deleteproject()" class="delete-permission">Yes</span>
+                <span onclick="discard()" class="discard">No</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal" onclick="discardChanges()">
+        <div class="main-body" onclick="stopPropagation(event)">
+            <h2>Edit Project</h2>
+            <form class="form" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+                <input type="text" placeholder="Project Name" name="name">
+                <textarea type = "text" placeholder="Description" name="description" class="textarea"></textarea>
+                <input type = "file" placeholder="Image" id="inputFile"  onchange="handleChange(event)" name="imgFile">
+                <input type="text" placeholder="Image" onclick="handleClick()"name="file" id="fileName" readonly="true">
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+    <script src="index.js">
+    </script>
+</body>
+</html>
